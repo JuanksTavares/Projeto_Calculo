@@ -70,3 +70,65 @@ function calculateIntervals() {
         }
     }
 }
+
+function calculateRoots() {
+    roots = []
+
+    for(let i = 0; i < intervals.length; i++) {
+        while(stopCriteria > precision) {
+            let result = 0
+            let elevate = order
+
+            let average =  (intervals[i][0] + intervals[i][1]) / 2
+
+            for(let j = 0; j < numbers.length ; j++) {
+                result += numbers[j]*(average**(elevate))
+
+                elevate--
+            }
+
+            if(result > 0) {
+            intervals[i][1] = average
+            }
+
+            if(result < 0) {
+            intervals[i][0] = average
+            }
+
+            stopCriteria = Math.abs(intervals[i][0] - intervals[i][1])
+        }
+
+        roots.push([(intervals[i][0] + intervals[i][1]) / 2])
+
+        stopCriteria = 1
+    }
+}
+
+function showResults() {
+    let showStrongRoots = document.getElementById("strongRoots")
+    let showStrongIntervals = document.getElementById("strongIntervals")
+    let showStrongPrecision = document.getElementById("strongPrecision")
+
+    showStrongRoots.innerHTML = "Raízes"
+    showStrongIntervals.innerHTML = "Intervalos"
+    showStrongPrecision.innerHTML = "Erro"
+
+    let showResultRoots = document.getElementById("resultRoots")
+    let showResultIntervals = document.getElementById("resultIntervals")
+    let showResultPrecision = document.getElementById("resultPrecision")
+
+    let resultRoots = ""
+    let resultIntervals = ""
+
+    for(let i = 0; i < roots.length; i++) {
+        resultRoots += `<li>Raíz ${i + 1}:  ${roots[i]}</li> <br />`
+    }
+
+    for(let i = 0; i < intervalsDefault.length; i++) {
+        resultIntervals += `<li>Intervalo ${i + 1}: [${intervalsDefault[i][0]}, ${intervalsDefault[i][1]}]</li> <br />`
+    }
+
+    showResultRoots.innerHTML = resultRoots
+    showResultIntervals.innerHTML = resultIntervals
+    showResultPrecision.innerHTML = `<li>Erro menor que ${precision}</li>`
+}
