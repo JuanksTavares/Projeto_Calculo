@@ -1,0 +1,114 @@
+html {
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+
+input {
+    border: 15px solid black;
+    border-radius: 5rem;
+    width: 30%;
+    line-height: 2rem;
+}
+
+input {
+    padding: 0 1.5rem;
+    width: 30%;
+    height: 4rem;
+    font-size: 1rem;
+    font-weight: 400;
+    background: #ebf9f2;
+    border: 1px solid #d7d7d7;
+    border-radius: 0.25rem;
+}
+
+input::placeholder {
+    color: #969cb3
+}
+
+button {
+    height: 50px;
+    border-radius: 80px;
+    font-weight: 500;
+    background: #868989;
+    color: white;
+    padding: 0 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: left;
+
+    cursor: pointer;
+    border: 0;
+
+    transition: 0.2s;
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+button:hover {
+    filter: brightness(0.9);
+}
+
+label {
+    font-size: 1.5rem;
+}
+
+button:hover {
+    transition: 0.2s;
+    filter: brightness(0.9);
+}
+
+#first {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: left;
+    align-items: left;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+#numInputContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    align-items: left;
+    justify-content: left;
+}
+
+#numInputContainer div {
+    display: flex;
+    align-items: letf;
+    justify-content: left;
+    margin-bottom: 1.2rem;
+}
+
+#numInputContainer div label {
+    width: 100%;
+}
+
+#numInputContainer div input {
+    width: 100%;
+}
+
+#resultsText {
+    display: flex;
+    gap: 3rem;
+    justify-content: right;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+#resultsText div {
+    display: flex;
+    flex-direction: column;
+}
+
+#root {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+}

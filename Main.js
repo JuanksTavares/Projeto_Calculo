@@ -99,7 +99,6 @@ function calculateRoots() {
         }
 
         roots.push([(intervals[i][0] + intervals[i][1]) / 2])
-
         stopCriteria = 1
     }
 }
@@ -116,18 +115,15 @@ function showResults() {
     let showResultRoots = document.getElementById("resultRoots")
     let showResultIntervals = document.getElementById("resultIntervals")
     let showResultPrecision = document.getElementById("resultPrecision")
-
     let resultRoots = ""
     let resultIntervals = ""
 
     for(let i = 0; i < roots.length; i++) {
         resultRoots += `<li>Raíz ${i + 1}:  ${roots[i]}</li> <br />`
     }
-
     for(let i = 0; i < intervalsDefault.length; i++) {
         resultIntervals += `<li>Intervalo ${i + 1}: [${intervalsDefault[i][0]}, ${intervalsDefault[i][1]}]</li> <br />`
     }
-
     showResultRoots.innerHTML = resultRoots
     showResultIntervals.innerHTML = resultIntervals
     showResultPrecision.innerHTML = `<li>Erro menor que ${precision}</li>`
@@ -144,38 +140,28 @@ function calculateAll() {
 
 function addInputs(){
     order = 0
-
     order = document.getElementById("getOrder").value;
     functionOrder = order
-    let numInputContainer = document.getElementById("numInputContainer");
 
+    let numInputContainer = document.getElementById("numInputContainer");
     while (numInputContainer.hasChildNodes()) {
         numInputContainer.removeChild(numInputContainer.lastChild);
     }
-
     for (let i = 0; i <= order; i++) {
         let letter = String.fromCharCode(i + 65)
-
         const divElement = document.createElement("div")
-
         const labelElement = document.createElement("label")
 
         divElement.appendChild(labelElement)
-
         labelElement.innerHTML = "Número " + letter
-
         let numInput = document.createElement("input");
-
         numInput.type = "number";
         numInput.name = "number" + letter;
         numInput.id = letter
-
         divElement.appendChild(numInput);
         numInputContainer.appendChild(divElement)
-
     }
 }
-
 function drawFunction() {
     for(let i = 0; i < numbers.length - 1; i++) {
         if(numbers[i + 1] >= 0) {
@@ -188,16 +174,13 @@ function drawFunction() {
 
         functionOrder--
     }
-
     expression += `${numbers[numbers.length - 1]}`
-
     let contentsBounds = document.body.getBoundingClientRect();
     let width = 800;
     let height = 500;
     let ratio = contentsBounds.width / width;
     width *= ratio;
     height *= ratio;
-
     functionPlot({
       target: "#root",
       disableZoom: false,
@@ -205,13 +188,9 @@ function drawFunction() {
       height: 600,
       yAxis: { domain: [-10, 10] },
       grid: true,
-      data: [
-        {
-          fn: expression,
-        }
+      data: [{fn: expression,}
       ]
     });
 }
-
 document.getElementById("generateInputs").addEventListener('click', addInputs)
 document.getElementById("calculateAll").addEventListener('click', calculateAll)
